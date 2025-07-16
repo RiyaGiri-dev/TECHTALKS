@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>All Vlogs - TechTalks</title>
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<%- include("../partials/header") %>
+
+<div class="container fade-in">
+  <h2>All Vlogs 📚</h2>
+  <% vlogs.forEach(vlog => { %>
+    <div class="vlog-card">
+      <h3><%= vlog.title %></h3>
+      <p><%= vlog.content.substring(0, 150) %>...</p>
+
+      <div class="button-group">
+        <a href="/vlog/<%= vlog._id %>" class="btn">Read More</a>
+
+        <% if (currentUser && currentUser.username === vlog.author) { %>
+          <form action="/vlog/<%= vlog._id %>/delete" method="POST" onsubmit="return confirm('Are you sure?');">
+            <button type="submit" class="btn delete-btn">Delete</button>
+          </form>
+        <% } %>
+      </div>
+
+      <p class="author">By <%= vlog.author %> on <%= vlog.createdAt.toDateString() %></p>
+    </div>
+  <% }) %>
+</div>
+
+</body>
+</html>

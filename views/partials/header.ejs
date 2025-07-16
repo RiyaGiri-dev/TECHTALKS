@@ -1,0 +1,13 @@
+<header class="site-header">
+  <h1><a href="/">TechTalks</a></h1>
+  <nav>
+    <a href="/vlog">Vlogs</a>
+    <a href="/vlog/new">New Vlog</a>
+    <% if (currentUser) { %>
+      <span>Hello, <%= currentUser.username %></span>
+      <a href="/auth/logout">Logout</a>
+    <% } else { %>
+      <a href="/auth/login">Login</a>
+    <% } %>
+  </nav>
+</header>

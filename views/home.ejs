@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome to TechTalks</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff8f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #ffb6b9;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-family: 'Caveat', cursive;
+      font-size: 36px;
+      margin: 0;
+    }
+
+    nav a {
+      margin: 0 10px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .home-content {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .home-content h2 {
+      font-size: 28px;
+      color: #333;
+    }
+
+    .home-content p {
+      font-size: 18px;
+      margin-top: 10px;
+      color: #666;
+    }
+
+    .home-content a {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #ffa4a7;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .home-content a:hover {
+      background-color: #ff8f92;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>TechTalks 💬</h1>
+  <nav>
+    <% if (currentUser) { %>
+      <a href="/vlog/new">Write Vlog</a>
+      <a href="/auth/logout">Logout</a>
+    <% } else { %>
+      <a href="/auth/login">Login</a>
+      <a href="/auth/register">Register</a>
+    <% } %>
+  </nav>
+</header>
+
+<div class="home-content">
+  <h2>Welcome to TechTalks, Riya's Techy Corner!</h2>
+  <p>Read and share stories, learn tech, and chat with fellow coders.</p>
+  <a href="/vlog">Explore Vlogs</a>
+</div>
+
+</body>
+</html>

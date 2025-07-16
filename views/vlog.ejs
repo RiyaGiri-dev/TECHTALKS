@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TechTalks - All Vlogs</title>
+  <link rel="stylesheet" href="/css/main.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff8f0;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #ffb6b9;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-family: 'Caveat', cursive;
+      font-size: 36px;
+      margin: 0;
+    }
+
+    nav a {
+      margin: 0 10px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+    .vlog {
+      border: 2px solid #ffdcdc;
+      background: #fff;
+      padding: 15px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 2px 2px 10px #ffe4e6;
+    }
+
+    .vlog h3 {
+      margin: 0;
+    }
+
+    .vlog p {
+      margin-top: 10px;
+    }
+
+    .vlog a.button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 5px 15px;
+      background-color: #ffa4a7;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    .vlog a.button:hover {
+      background-color: #ff8f92;
+    }
+
+    .write-new {
+      text-align: right;
+      margin-bottom: 10px;
+    }
+
+    .write-new a {
+      background-color: #ffb347;
+      color: white;
+      padding: 7px 12px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .write-new a:hover {
+      background-color: #ffa834;
+    }
+
+    .author {
+      font-size: 12px;
+      color: #777;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>TechTalks 💬</h1>
+  <nav>
+    <% if (currentUser) { %>
+      <a href="/vlog/new">Write Vlog</a>
+      <a href="/auth/logout">Logout</a>
+    <% } else { %>
+      <a href="/auth/login">Login</a>
+      <a href="/auth/register">Register</a>
+    <% } %>
+  </nav>
+</header>
+
+<div class="container">
+  <div class="write-new">
+    <% if (currentUser) { %>
+      <a href="/vlog/new">➕ Post a New Vlog</a>
+    <% } else { %>
+      <p><a href="/auth/login">Login</a> to write your own tech story!</p>
+    <% } %>
+  </div>
+
+  <% vlogs.forEach(v => { %>
+    <div class="vlog">
+      <h3><%= v.title %></h3>
+      <p><%= v.content.length > 150 ? v.content.slice(0, 150) + '...' : v.content %></p>
+      <a href="/vlog/<%= v._id %>" class="button">Read More</a>
+      <p class="author">By <%= v.author %> on <%= v.createdAt.toDateString() %></p>
+    </div>
+  <% }) %>
+</div>
+
+</body>
+</html>
